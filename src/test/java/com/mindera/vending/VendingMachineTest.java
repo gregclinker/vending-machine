@@ -1,12 +1,25 @@
-package com.vending;
+package com.mindera.vending;
 
+import com.mindera.vending.exception.InsufficientChangeException;
+import com.mindera.vending.exception.NotFullPaidException;
+import com.mindera.vending.exception.SoldOutException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest extends AbstractTest {
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
 
     @Test
     public void happyPath() {
         vendingMachine.vend(1, new Integer[]{50});
+        assertEquals(1, productStore.getById(1).getStockCount().intValue());
+        vendingMachine.vend(1, new Integer[]{50});
+        assertEquals(0, productStore.getById(1).getStockCount().intValue());
     }
 
     @Test(expected = NotFullPaidException.class)

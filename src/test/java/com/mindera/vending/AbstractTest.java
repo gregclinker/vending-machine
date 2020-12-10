@@ -1,4 +1,4 @@
-package com.vending;
+package com.mindera.vending;
 
 import org.junit.Before;
 

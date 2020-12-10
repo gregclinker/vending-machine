@@ -1,16 +1,15 @@
-package com.vending;
+package com.mindera.vending;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages products
+ */
 public class ProductStore {
     private List<Product> products;
     private Map<Integer, Product> productMap = new HashMap();
-
-    public Product getById(Integer id) {
-        return productMap.get(id);
-    }
 
     public List<Product> getProducts() {
         return this.products;
@@ -23,7 +22,10 @@ public class ProductStore {
         }
     }
 
-    public Map<Integer, Product> getProductMap() {
-        return this.productMap;
+    public Product getById(Integer Id) {
+        if (productMap.get(Id) == null) {
+            throw new RuntimeException("product with Id " + Id + " does not exsist in store");
+        }
+        return productMap.get(Id);
     }
 }
