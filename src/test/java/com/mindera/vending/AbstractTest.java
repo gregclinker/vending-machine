@@ -1,11 +1,16 @@
 package com.mindera.vending;
 
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractTest {
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
 
     protected final VendingMachine vendingMachine = new VendingMachine();
     protected final CoinStore coinStore = new CoinStore();

@@ -11,9 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest extends AbstractTest {
 
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
-
     @Test
     public void happyPath() {
         vendingMachine.vend(1, new Integer[]{50});
@@ -34,8 +31,10 @@ public class VendingMachineTest extends AbstractTest {
         vendingMachine.vend(1, new Integer[]{50});
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void invalidCoins() {
+        expectedEx.expect(RuntimeException.class);
+        expectedEx.expectMessage("51 is an invalid coin amount");
         vendingMachine.vend(1, new Integer[]{51});
     }
 

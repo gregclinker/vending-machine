@@ -1,5 +1,6 @@
 package com.mindera.vending;
 
+import com.mindera.vending.exception.SoldOutException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

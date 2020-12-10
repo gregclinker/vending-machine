@@ -58,7 +58,7 @@ public class CoinStore {
         Integer totalPenceAmount = 0;
         for (int i = 0; i < coins.length; i++) {
             if (!VALID_COINS.contains(coins[i])) {
-                throw new RuntimeException(coins[i] + " is an invalid coind amount");
+                throw new RuntimeException(coins[i] + " is an invalid coin amount");
             }
             add(coins[i]);
             totalPenceAmount += coins[i];

@@ -14,7 +14,6 @@ public class CointStoreTest extends AbstractTest {
         final List<Integer> change = coinStore.calculateChange(80, 100);
         assertEquals(1, change.size());
         assertEquals(20, change.get(0).intValue());
-
     }
 
     @Test
@@ -28,5 +27,17 @@ public class CointStoreTest extends AbstractTest {
     public void insufficientChange() {
         coinStore.calculateChange(80, 150);
         coinStore.calculateChange(80, 150);
+    }
+
+    @Test
+    public void checkCoins() {
+        coinStore.checkCoins(new Integer[]{1, 5, 20, 50, 100, 200});
+    }
+
+    @Test
+    public void invalidCoins() {
+        expectedEx.expect(RuntimeException.class);
+        expectedEx.expectMessage("3 is an invalid coin amount");
+        coinStore.checkCoins(new Integer[]{1, 5, 20, 50, 100, 200, 3});
     }
 }
